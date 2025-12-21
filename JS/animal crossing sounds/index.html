@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title> Animal Crossing sounds</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://fav.farm/✅" />
+</head>
+
+<body>
+    <div class="emotes">
+        <div data-key="65" class="emote">
+            <kbd>A</kbd>
+            <span class="sound">exclamation</span>
+        </div>
+        <div data-key="83" class="emote">
+            <kbd>S</kbd>
+            <span class="sound">catch</span>
+        </div>
+        <div data-key="68" class="emote">
+            <kbd>D</kbd>
+            <span class="sound">shocked</span>
+        </div>
+        <div data-key="70" class="emote">
+            <kbd>F</kbd>
+            <span class="sound">curiosity</span>
+        </div>
+        <div data-key="71" class="emote">
+            <kbd>G</kbd>
+            <span class="sound">fearful</span>
+        </div>
+        <div data-key="72" class="emote">
+            <kbd>H</kbd>
+            <span class="sound">greetings</span>
+        </div>
+        <div data-key="74" class="emote">
+            <kbd>J</kbd>
+            <span class="sound">pleased</span>
+        </div>
+        <div data-key="75" class="emote">
+            <kbd>K</kbd>
+            <span class="sound">sadness</span>
+        </div>
+        <div data-key="76" class="emote">
+            <kbd>L</kbd>
+            <span class="sound">sleepy</span>
+        </div>
+    </div>
+    
+    <audio data-key="65" src="sounds/acnl_-_exclamation.mp3"></audio>
+    <audio data-key="83" src="sounds/animal-crossing-catch-sound.mp3"></audio>
+    <audio data-key="68" src="sounds/animal-crossing-shocked-sound-effect.mp3"></audio>
+    <audio data-key="70" src="sounds/curiosity-emote-animal-crossing.mp3"></audio>
+    <audio data-key="71" src="sounds/fearful-emote-animal-crossing.mp3"></audio>
+    <audio data-key="72" src="sounds/greetings-emote-animal-crossing.mp3"></audio>
+    <audio data-key="74" src="sounds/pleased-emote-animal-crossing.mp3"></audio>
+    <audio data-key="75" src="sounds/sadness-emote-animal-crossing.mp3"></audio>
+    <audio data-key="76" src="sounds/sleepy-emote-animal-crossing.mp3"></audio>
+
+    <script>
+        function removeTransition(e) {
+            if (e.propertyName !== 'transform') return;
+            e.target.classList.remove('playing');
+        }
+
+        function playSound(e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const emote = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            if (!audio) return;
+
+            emote.classList.add('playing');
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        const emotes = Array.from(document.querySelectorAll('.emote'));
+        emotes.forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound);
+    </script>
+</body>
+</html>
