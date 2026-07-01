@@ -1,5 +1,8 @@
 package com.example.ticket_api;
 
+import com.example.ticket_api.model.Ticket;
+import com.example.ticket_api.repository.TicketRepository;
+import com.example.ticket_api.model.TicketRequest;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -7,5 +7,5 @@ import java.util.Optional;
 public interface TicketRepository {
     Ticket save(Ticket ticket);
 
-    Optional<Ticket> findbyId(Long id);
+    Optional<Ticket> findById(Long id);
 }
